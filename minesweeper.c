@@ -184,6 +184,9 @@ int main(){
                 if(backBoard[x][y] == '-'){
                     printBoard(backBoard);
                     printf("\nGame Over!\n");
+                    //free memory
+                    freeMem(frontBoard);
+                    freeMem(backBoardTemp);
                     exit(1);
                 }
                 else{
@@ -191,6 +194,11 @@ int main(){
                     frontBoard[x][y] = backBoard[x][y];
                     if(tilesLeft == 0){
                         printf("Congrats you safely cleared all the mines!\n");
+
+                        //Free allocated memory
+                        freeMem(frontBoard);
+                        freeMem(backBoardTemp);
+                        exit(1);
                     }
                 }
             }
